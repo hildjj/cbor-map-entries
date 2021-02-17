@@ -1,0 +1,15 @@
+{
+  "name": "cbor-map-entries",
+  "version": "0.0.0",
+  "description": "This document specifies a tag for a Map datatype in the Concise Binary Object Representation ([CBOR](https://tools.ietf.org/html/rfc8949)).",
+  "private": true,
+  "scripts": {
+    "test": "node example.js"
+  },
+  "keywords": [],
+  "author": "Joe Hildebrand <joe-github@cursive.net>",
+  "license": "MIT",
+  "devDependencies": {
+    "cbor": "^7.0.1"
+  }
+}
