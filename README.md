@@ -1,9 +1,9 @@
-# Map entries for CBOR
+# Ordered Maps for CBOR
 
-This document specifies a tag for a Map datatype in the Concise Binary Object Representation ([CBOR](https://tools.ietf.org/html/rfc8949)).  
+This document specifies a tag for an Ordered Map datatype in the Concise Binary Object Representation ([CBOR](https://tools.ietf.org/html/rfc8949)).  
 
 ```
-Tag: 279 (array)
+Tag: TBD279 (array)
 Data Item: array
 Semantics: array of alternating keys and values
 Reference: http://github.com/hildjj/cbor-map-entries
@@ -16,13 +16,16 @@ Although CBOR has support for generic Maps (Major Type 5), some implementation l
 
 ## Semantics
 
-Apply tag 279 to a CBOR array (Major Type 4), which of alternating keys and values.  There must be an even number of items in the array or the tag is not well-formed.  This is the same wire encoding as a CBOR map (Major Type 5), but prefixed with tag 279.
+Apply tag TBD279 to a CBOR array (Major Type 4), which of alternating keys and values.  There must be an even number of items in the array or the tag is not valid.  This is the same wire encoding as a CBOR map (Major Type 5), but using Major Type 4 and enclosed by tag TBD279.
+
+In contrast to maps in the CBOR basic generic data model, order in Ordered Maps is significant.
+Note that the term "ordered" does not mean "sorted"; e.g., JavaScript Maps and Ruby Hashes maintain insertion order and not sort order.
 
 All other semantics for CBOR Map (Major Type 5) apply.  For instance, duplicate keys shall be handled as in [RFC 8949, section 5.6](https://tools.ietf.org/html/rfc8949#section-5.6)
 
 ## Rationale
 
-A generic CBOR processor might be written in such a way that it processes tags by first decoding the data item inside the tag, then applying a tag-specific function to the results to get a final value.  If the data item is a Map already, then either the complexity we're trying to avoid has already happened, or information might be lost by converting the key into a string before the tag function is called.
+A generic CBOR processor might be written in such a way that it processes tags by first decoding the data item inside the tag, then applying a tag-specific function to the results to get a final value.  If the data item is a Map already, then either the complexity we're trying to avoid has already happened, or information might be lost by converting the key into a string before the tag function is called.  (Section 3.4 of RFC 8949 generally deprecates defining Tags in a way that does not work when starting from the generic data model, i.e. without special support during parsing time.)
 
 The current approach allows a completely generic decoder to preserve all needed information before handing off to a tag function.
 
@@ -38,7 +41,7 @@ This would produce the following CBOR:
 
 ```
   d9                -- Tag, number in next 2 bytes
-    0117            -- Tag #279
+    0117            -- Tag #279 (TBD)
       84            -- Array, 4 items
         01          -- [0], 1
         02          -- [1], 2
