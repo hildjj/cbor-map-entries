@@ -16,10 +16,9 @@ Although CBOR has support for generic Maps (Major Type 5), some implementation l
 
 ## Semantics
 
-Apply tag TBD279 to a CBOR array (Major Type 4), which of alternating keys and values.  There must be an even number of items in the array or the tag is not valid.  This is the same wire encoding as a CBOR map (Major Type 5), but using Major Type 4 and enclosed by tag TBD279.
+Apply tag TBD279 to a CBOR array (Major Type 4), which conssists of alternating keys and values.  There must be an even number of items in the array or the tag is not valid.  This is the same wire encoding as a CBOR map (Major Type 5), but using Major Type 4 and enclosed by tag TBD279.
 
-In contrast to maps in the CBOR basic generic data model, order in Ordered Maps is significant.
-Note that the term "ordered" does not mean "sorted"; e.g., JavaScript Maps and Ruby Hashes maintain insertion order and not sort order.
+In contrast to maps in the CBOR basic generic data model, order in Ordered Maps is significant  Note that the term "ordered" does not mean "sorted"; e.g., JavaScript Maps and Ruby Hashes maintain insertion order and not sort order.
 
 All other semantics for CBOR Map (Major Type 5) apply.  For instance, duplicate keys shall be handled as in [RFC 8949, section 5.6](https://tools.ietf.org/html/rfc8949#section-5.6)
 
